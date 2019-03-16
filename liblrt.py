@@ -14,7 +14,7 @@ import gzip
 from HTMLParser import HTMLParser
 htmlParser = HTMLParser()
 
-LRT_URL = 'http://www.lrt.lt/'
+LRT_URL = 'http://www2.lrt.lt/'
 VIDEOS_COUNT_PER_PAGE = 100 
 LATEST_NEWS_URL = LRT_URL + 'data-service/module/mediaNews/callback/top_media/startRow/%d/limit/' + str(VIDEOS_COUNT_PER_PAGE)
 LATEST_VIDEOS_URL = LRT_URL + 'data-service/module/media/callback/latest_media/startRow/%d/order/dateZ/limit/' + str(VIDEOS_COUNT_PER_PAGE)
@@ -330,7 +330,7 @@ def getPlaylist(mediaId):
 
   tvList = []
 
-  items = re.findall('<img class="pl-rec-img" src="http://www.lrt.lt/mimages/Media/items/(\d+)/240/135/"  alt="([^"]*)"/>', items[0], re.DOTALL)
+  items = re.findall('<img class="pl-rec-img" src="http://www2.lrt.lt/mimages/Media/items/(\d+)/240/135/"  alt="([^"]*)"/>', items[0], re.DOTALL)
   for i, title in items:
     tv = {}
     tv['title'] = title
@@ -346,7 +346,7 @@ def getKidsAgeGroups():
   
   html = getURL(LRT_URL + 'vaikams')
   
-  items = re.findall('<a class="[^"]*" href="http://www.lrt.lt/vaikams/([^"]*)"><br>([^<]*)</a>', html, re.DOTALL)
+  items = re.findall('<a class="[^"]*" href="http://www2.lrt.lt/vaikams/([^"]*)"><br>([^<]*)</a>', html, re.DOTALL)
   if not items:
     return []
   
